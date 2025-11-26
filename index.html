@@ -1,7 +1,776 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maya Clinton – Illustration & Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Selected illustration, animation stills and painting work by Maya Clinton." />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+  :root {
+    --bg: #05060a;
+    --panel-bg: rgba(13, 16, 32, 0.92);
+    --card-bg: #151821;
+    --accent: #f7b500;
+    --accent-soft: rgba(247, 181, 0, 0.2);
+    --text-main: #f5f5f5;
+    --text-muted: #b3b8c6;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --radius-lg: 18px;
+    --radius-xl: 26px;
+    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
+    --shadow-subtle: 0 12px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at top left, #272d54 0, transparent 52%),
+      radial-gradient(circle at bottom right, #101321 0, #020309 72%);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page {
+    min-height: 100vh;
+    padding: 36px 14px 48px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 1120px;
+    position: relative;
+  }
+
+  /* left accent line */
+  .shell::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, var(--accent), transparent 38%, transparent 62%, #4e6cff);
+    opacity: 0.7;
+  }
+
+  .frame {
+    margin-left: 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(135deg, rgba(10, 11, 22, 0.96), rgba(7, 7, 14, 0.98));
+    box-shadow: var(--shadow-soft);
+    padding: 20px 20px 24px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .title-block h1 {
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    margin: 0 0 4px;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+  }
+
+  .name-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .name-accent-chip {
+    font-size: 0.78rem;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.16);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    margin: 3px 0 0;
+    color: var(--text-muted);
+    font-size: 0.94rem;
+  }
+
+  .subtitle span {
+    color: var(--accent);
+  }
+
+  .location-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(211, 215, 230, 0.85);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .jp-tag-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .jp-tag-row span.jp {
+    font-size: 0.78rem;
+    opacity: 0.9;
+  }
+
+  .right-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .tag-pill {
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    white-space: nowrap;
+    background: rgba(10, 11, 18, 0.7);
+    text-transform: uppercase;
+  }
+
+  .tag-pill span {
+    color: var(--accent);
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .social-icons a {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    opacity: 0.75;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .social-icons svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .social-icons img {
+    height: 22px;
+    width: auto;
+    display: block;
+    opacity: 0.75;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .social-link:hover img {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .header-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 720px;
+  }
+
+  .header-bio {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .header-bio strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .header-note {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+  }
+
+  .header-note strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  .highlight-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .highlight-pill {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    box-shadow: 0 0 10px rgba(247, 181, 0, 0.6);
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .section-block {
+    padding: 14px 10px 10px;
+    border-radius: 22px;
+    background: radial-gradient(circle at top left, rgba(37, 42, 72, 0.9), rgba(10, 12, 22, 0.9));
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-left: 4px;
+    margin-bottom: 4px;
+  }
+
+  .section-caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 8px 4px;
+  }
+
+  .gallery {
+    margin-top: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  .item {
+    background: radial-gradient(circle at top left, #23283a, #10121a);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.7);
+    border-color: rgba(247, 181, 0, 0.55);
+    background: radial-gradient(circle at top, #2c3350, #10121a);
+  }
+
+  .primary-link {
+    display: block;
+  }
+
+  .thumb-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+  }
+
+  .thumb-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.5));
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .item:hover .thumb-wrapper::after {
+    opacity: 1;
+  }
+
+  .thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+    transition: transform 0.25s ease-out;
+  }
+
+  .item:hover .thumb {
+    transform: scale(1.05);
+  }
+
+  .meta {
+    padding: 10px 12px 12px;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+
+  .meta h3 {
+    margin: 0 0 4px;
+    font-size: 0.98rem;
+    font-weight: 520;
+  }
+
+  .meta p {
+    margin: 0;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+  }
+
+  /* TikTok / IG pills */
+  .pill-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .icon-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.16);
+    color: var(--text-muted);
+    background: rgba(0,0,0,0.25);
+  }
+
+  .icon-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .icon-pill svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .likes {
+    opacity: 0.85;
+    font-size: 0.78rem;
+  }
+
+  footer {
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: right;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      padding: 20px 10px 32px;
+    }
+
+    .shell::before {
+      left: 2px;
+    }
+
+    .frame {
+      margin-left: 10px;
+      padding: 18px 14px 22px;
+      border-radius: 22px;
+    }
+
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .right-header {
+      align-items: flex-start;
+    }
+
+    .gallery {
+      gap: 14px;
+    }
+
+    .thumb-wrapper {
+      height: 260px;
+    }
+  }
+  </style>
+</head>
 <body>
-<h1>Hello World!!!!!!!!!!!</h1>
-<p></p>
+  <div class="page">
+    <div class="shell">
+      <div class="frame">
+
+        <!-- HEADER -->
+        <header>
+          <div class="header-top">
+            <div class="title-block">
+              <div class="name-wrap">
+                <h1 class="name-accent">Maya Clinton</h1>
+                <span class="name-accent-chip">マヤ · MAYA</span>
+              </div>
+
+              <p class="subtitle">
+                <p class="subtitle">
+                  Japanese–Irish illustrator &amp; animator, with a bakcground in 
+                <span>physics and computer science</span>.
+              </p>
+
+              <div class="location-row">
+                <span class="dot"></span>
+                <span>Based in Dublin, Ireland</span>
+              </div>
+
+              <div class="jp-tag-row">
+                <span class="jp">絵・アニメーション・ストーリーテリング</span>
+                <span>· visual storytelling</span>
+              </div>
+            </div>
+
+            <div class="right-header">
+              <div class="tag-pill">
+                <span>Researcher</span> &nbsp;·&nbsp; Natural capital &amp; cities
+              </div>
+              <div class="social-icons">
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@mayaclintonart" target="_blank" aria-label="TikTok">
+                  <svg viewBox="0 0 256 256" fill="currentColor">
+                    <path d="M240 81.5a84.8 84.8 0 0 1-49.3-15.6v87a67.8 67.8 0 1 1-58-67v35.3a32.5 32.5 0 1 0 25.6 31.7V16h33.1a51.6 51.6 0 0 0 48.6 51.5Z"/>
+                  </svg>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/mayaclintonart" target="_blank" aria-label="Instagram">
+                  <svg viewBox="0 0 256 256" fill="currentColor">
+                    <path d="M128 80a48 48 0 1 0 48 48 48 48 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm76-88a12 12 0 1 1 12-12 12 12 0 0 1-12 12Zm32-16v128a48 48 0 0 1-48 48H68a48 48 0 0 1-48-48V56A48 48 0 0 1 68 8h120a48 48 0 0 1 48 48Zm-16 0a32 32 0 0 0-32-32H68a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h120a32 32 0 0 0 32-32Z"/>
+                  </svg>
+                </a>
+
+                <!-- Patreon -->
+                <a href="https://www.patreon.com/juniperses" target="_blank" aria-label="Patreon" class="social-link">
+                  <img src="images/PATREON_SYMBOL_1_WHITE_RGB.svg" alt="Patreon" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-bottom">
+            <p class="header-bio">
+              <strong>Started with sketchbooks, acrylics and life drawing</strong>, and drifted into digital art and short
+              animated loops. By day I work on natural capital &amp; green space research in Dublin; the rest of the time
+              I’m building narrative-led visual work.
+            </p>
+
+          
+
+            <div class="highlight-row">
+              <span class="highlight-dot"></span>
+              <span class="highlight-pill">Work in progress · Portfolio snapshot</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+          <!-- DIGITAL WORK -->
+          <div class="section-block">
+            <div class="section-label">Recent digital work</div>
+            <p class="section-caption">Animation loops and illustration stills from ongoing personal pieces.</p>
+
+            <section class="gallery">
+
+              <!-- DIGITAL ITEM 1 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece1.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/piece1.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Solas – character key moment</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Focus on movement, lighting and quiet emotional beats.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 2 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece2.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/piece2.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Driving in Tokyo</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Polished compositing and a cinematic camera move.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 3 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece3.jpg" target="_blank">
+                  <div class="thumb-wrapper">
+                    <img src="images/piece3.jpg" alt="Background study – desk corner" class="thumb" />
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Background study – desk corner</h3>
+                  <p>Environment concept · 2023</p>
+                  <p>Colour and light practice inspired by everyday spaces.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 4 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece4.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/piece4.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Solas – dolly zoom sequence</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Exploring dolly zoom, tension and a moment of realisation.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 5 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece5.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/piece5.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Running sequence</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Exploring a running sequence with a dynamic background.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 6 -->
+              <div class="item">
+                <a class="primary-link" href="images/piece6.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/piece6.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>City walk</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Exploring 2D camera movement.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 7 -->
+              <div class="item">
+                <a class="primary-link" href="images/eyes.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/eyes.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Solas – revenge</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Exploring more with storytelling and mood.</p>
+                </div>
+              </div>
+
+              <!-- DIGITAL ITEM 8 -->
+              <div class="item">
+                <a class="primary-link" href="images/solas.mp4" target="_blank">
+                  <div class="thumb-wrapper">
+                    <video class="thumb" autoplay muted loop playsinline preload="metadata">
+                      <source src="images/solas.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Solas</h3>
+                  <p>Frame-by-frame animation · 2024</p>
+                  <p>Hair movement in strong winds.</p>
+                </div>
+              </div>
+
+            </section>
+          </div>
+
+          <!-- PAINTING SECTION -->
+          <div class="section-block">
+            <div class="section-label">Painting &amp; drawing</div>
+            <p class="section-caption">Earlier work in acrylics, ink and sketchbooks.</p>
+
+            <section class="gallery">
+
+              <!-- PAINTING ITEM 1 -->
+              <div class="item">
+                <a class="primary-link" href="images/paint1.jpg" target="_blank">
+                  <div class="thumb-wrapper">
+                    <img src="images/paint1.jpg" alt="Frank Ocean" class="thumb" />
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Frank Ocean</h3>
+                  <p>Acrylic on canvas · 2020</p>
+                  <p>Painting of Frank Ocean's Blonde album cover.</p>
+
+                  <div class="pill-row">
+                    <!-- TikTok -->
+                    <a class="icon-pill" href="https://www.tiktok.com/@mayaclintonart/photo/7332787601922854176" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M240 81.5a84.8 84.8 0 0 1-49.3-15.6v87a67.8 67.8 0 1 1-58-67v35.3a32.5 32.5 0 1 0 25.6 31.7V16h33.1a51.6 51.6 0 0 0 48.6 51.5Z"/>
+                      </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a class="icon-pill" href="https://www.instagram.com/p/Cvx0urFoQzX/" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M128 80a48 48 0 1 0 48 48 48 48 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm76-88a12 12 0 1 1 12-12 12 12 0 0 1-12 12Zm32-16v128a48 48 0 0 1-48 48H68a48 48 0 0 1-48-48V56A48 48 0 0 1 68 8h120a48 48 0 0 1 48 48Zm-16 0a32 32 0 0 0-32-32H68a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h120a32 32 0 0 0 32-32Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAINTING ITEM 2 -->
+              <div class="item">
+                <a class="primary-link" href="images/paint2.jpg" target="_blank">
+                  <div class="thumb-wrapper">
+                    <img src="images/paint2.jpg" alt="Snow in Sapporo painting" class="thumb" />
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Snow in Sapporo</h3>
+                  <p>Acrylic on canvas · 2024</p>
+                  <p>Painted using a reference photo taken by Valentin Kern.</p>
+
+                  <div class="pill-row">
+                    <!-- TikTok -->
+                    <a class="icon-pill" href="https://www.tiktok.com/@mayaclintonart/video/7329654840483745057" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M240 81.5a84.8 84.8 0 0 1-49.3-15.6v87a67.8 67.8 0 1 1-58-67v35.3a32.5 32.5 0 1 0 25.6 31.7V16h33.1a51.6 51.6 0 0 0 48.6 51.5Z"/>
+                      </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a class="icon-pill" href="https://www.instagram.com/p/C20nrFjINK2/" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M128 80a48 48 0 1 0 48 48 48 48 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm76-88a12 12 0 1 1 12-12 12 12 0 0 1-12 12Zm32-16v128a48 48 0 0 1-48 48H68a48 48 0 0 1-48-48V56A48 48 0 0 1 68 8h120a48 48 0 0 1 48 48Zm-16 0a32 32 0 0 0-32-32H68a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h120a32 32 0 0 0 32-32Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAINTING ITEM 3 -->
+              <div class="item">
+                <a class="primary-link" href="images/paint3.jpg" target="_blank">
+                  <div class="thumb-wrapper">
+                    <img src="images/paint3.jpg" alt="Fridge in Kyoto drawing" class="thumb" />
+                  </div>
+                </a>
+                <div class="meta">
+                  <h3>Fridge in Kyoto</h3>
+                  <p>Marker, pen &amp; pencil · 2023</p>
+                  <p>Drawn using a photo I took in Kyoto. My first exploration of stylised drawing.</p>
+
+                  <div class="pill-row">
+                    <!-- TikTok -->
+                    <a class="icon-pill" href="https://www.tiktok.com/@mayaclintonart/video/7258040528518876443" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M240 81.5a84.8 84.8 0 0 1-49.3-15.6v87a67.8 67.8 0 1 1-58-67v35.3a32.5 32.5 0 1 0 25.6 31.7V16h33.1a51.6 51.6 0 0 0 48.6 51.5Z"/>
+                      </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a class="icon-pill" href="https://www.instagram.com/p/CvFRXSZIihh/" target="_blank" rel="noopener">
+                      <svg viewBox="0 0 256 256" fill="currentColor">
+                        <path d="M128 80a48 48 0 1 0 48 48 48 48 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32 32 32 0 0 1-32 32Zm76-88a12 12 0 1 1 12-12 12 12 0 0 1-12 12Zm32-16v128a48 48 0 0 1-48 48H68a48 48 0 0 1-48-48V56A48 48 0 0 1 68 8h120a48 48 0 0 1 48 48Zm-16 0a32 32 0 0 0-32-32H68a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h120a32 32 0 0 0 32-32Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+          </div>
+
+          <footer>
+            Full portfolio &amp; animation reels in progress — this page is a curated selection.
+          </footer>
+
+        </main>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
